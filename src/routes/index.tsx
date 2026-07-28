@@ -673,7 +673,7 @@ function Victory({ profile }: { profile: Profile }) {
       </GameCard>
 
       <p className="text-sm text-muted-foreground">
-        Nosso time vai te chamar no WhatsApp com uma conversa já personalizada — sem começar do zero.
+        Nosso time entrará em contato via WhatsApp para dar prosseguimento à sua jornada.
       </p>
 
       <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary/70">
