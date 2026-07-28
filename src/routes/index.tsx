@@ -133,7 +133,7 @@ function GridBackdrop() {
       className="pointer-events-none absolute inset-0 opacity-[0.15]"
       style={{
         backgroundImage:
-          "linear-gradient(oklch(0.78 0.19 155 / 0.5) 1px, transparent 1px), linear-gradient(90deg, oklch(0.78 0.19 155 / 0.5) 1px, transparent 1px)",
+          "linear-gradient(oklch(0.79 0.14 82 / 0.35) 1px, transparent 1px), linear-gradient(90deg, oklch(0.79 0.14 82 / 0.35) 1px, transparent 1px)",
         backgroundSize: "44px 44px",
         maskImage: "radial-gradient(circle at 50% 30%, black, transparent 75%)",
       }}
@@ -623,7 +623,7 @@ function BossFinal({
         }
         .input-game:focus {
           border-color: var(--primary);
-          box-shadow: 0 0 0 3px oklch(0.78 0.19 155 / 0.25);
+          box-shadow: 0 0 0 3px oklch(0.79 0.14 82 / 0.25);
         }
       `}</style>
     </section>
