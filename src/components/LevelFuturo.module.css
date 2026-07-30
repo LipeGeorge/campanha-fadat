@@ -1,0 +1,59 @@
+.grid {
+  display: grid;
+  gap: 12px;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--gold-line);
+  border-radius: var(--radius-sm);
+  background: var(--gold-soft);
+  font-size: 20px;
+}
+
+.body {
+  flex: 1;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--primary);
+}
+
+.desc {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--muted-foreground);
+}
+
+.index {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(154, 166, 196, 0.5);
+}

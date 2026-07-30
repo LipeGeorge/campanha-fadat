@@ -1,0 +1,75 @@
+.victory {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+  padding: 40px 0;
+  text-align: center;
+  animation: fadeUp 0.4s ease both;
+}
+
+.trophy {
+  font-size: 56px;
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--primary);
+}
+
+.title {
+  margin-top: 8px;
+  font-size: 28px;
+}
+
+.cardLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--primary);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-align: left;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.key {
+  color: var(--muted-foreground);
+}
+
+.value {
+  text-align: right;
+  color: var(--foreground);
+}
+
+.note {
+  font-size: 14px;
+  color: var(--muted-foreground);
+}
+
+.sign {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(245, 196, 81, 0.7);
+}

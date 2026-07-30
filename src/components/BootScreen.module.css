@@ -1,0 +1,61 @@
+.boot {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 64px;
+  animation: fadeUp 0.4s ease both;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.title {
+  font-size: clamp(38px, 12vw, 50px);
+  line-height: 0.96;
+}
+
+.lead {
+  max-width: 34ch;
+  font-size: 16px;
+  color: var(--muted-foreground);
+}
+
+.terminal {
+  min-height: 128px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: rgba(11, 18, 38, 0.75);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(245, 196, 81, 0.9);
+}
+
+.line {
+  animation: fadeUp 0.25s ease both;
+}
+
+.cursor {
+  color: var(--primary);
+  animation: blink 1s step-end infinite;
+}
+
+.bottom {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tap {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(154, 166, 196, 0.7);
+}

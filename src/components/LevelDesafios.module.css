@@ -1,0 +1,51 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: rgba(154, 166, 196, 0.6);
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    background 0.3s ease;
+}
+
+.rowDone {
+  border-color: var(--gold-line);
+  background: var(--gold-soft);
+  color: var(--foreground);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.mark {
+  color: rgba(154, 166, 196, 0.4);
+}
+
+.markDone {
+  color: var(--primary);
+}
+
+.gain {
+  color: rgba(154, 166, 196, 0.4);
+}
+
+.gainDone {
+  color: var(--primary);
+}
