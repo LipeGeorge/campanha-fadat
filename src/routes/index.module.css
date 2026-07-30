@@ -1,0 +1,40 @@
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  background-image: var(--gradient-hero);
+}
+
+.shell {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  padding: 24px 20px 56px;
+}
+
+.footer {
+  position: relative;
+  z-index: 10;
+  padding-bottom: 24px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(154, 166, 196, 0.55);
+}
+
+@media (min-width: 900px) {
+  .shell {
+    max-width: 540px;
+    padding-top: 40px;
+  }
+}
