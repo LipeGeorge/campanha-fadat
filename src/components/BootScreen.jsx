@@ -13,10 +13,11 @@ export default function BootScreen({ onStart }) {
   const [lines, setLines] = useState([]);
 
   useEffect(() => {
+    setLines([]);
     let i = 0;
     const t = setInterval(() => {
-      setLines((prev) => [...prev, SCRIPT[i]]);
       i += 1;
+      setLines(SCRIPT.slice(0, i));
       if (i >= SCRIPT.length) clearInterval(t);
     }, 450);
     return () => clearInterval(t);
