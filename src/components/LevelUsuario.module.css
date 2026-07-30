@@ -1,0 +1,25 @@
+.prompt {
+  display: block;
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted-foreground);
+}
+
+.bigInput {
+  font-size: 18px;
+}
+
+.confirm {
+  margin-top: 16px;
+  padding: 12px;
+  border: 1px solid var(--gold-line);
+  border-radius: var(--radius-sm);
+  background: var(--gold-soft);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--primary);
+  animation: fadeUp 0.25s ease both;
+}
