@@ -1,41 +1,143 @@
+export const CAMPANHA = "Se torne quem você nasceu pra ser!";
+
 export const initialProfile = {
   nome: "",
   whatsapp: "",
   cidade: "",
-  interesse: "",
-  momento: "",
-  formato: "",
-  motivacao: "",
+  depoimentosWhatsapp: null,
 };
 
-export const AREAS = [
-  { id: "saude", label: "Saúde & Bem-estar", emoji: "🩺" },
-  { id: "negocios", label: "Negócios & Gestão", emoji: "📈" },
-  { id: "tech", label: "Tecnologia & Dados", emoji: "💻" },
-  { id: "direito", label: "Direito & Sociedade", emoji: "⚖️" },
-  { id: "educacao", label: "Educação & Humanas", emoji: "📚" },
-  { id: "eng", label: "Engenharias", emoji: "🛠️" },
+/** As 7 missões vocacionais. Cada opção pontua para uma vocação. */
+export const MISSOES = [
+  {
+    id: "m1",
+    titulo: "O primeiro desafio",
+    pergunta: "Se você pudesse resolver apenas um problema da sociedade, qual seria?",
+    options: [
+      { id: "m1a", emoji: "🟢", label: "Melhorar a saúde das pessoas.", hint: "Ciências da Saúde", vocacao: "saude" },
+      { id: "m1b", emoji: "🔵", label: "Criar empresas e gerar empregos.", hint: "Negócios e Gestão", vocacao: "negocios" },
+      { id: "m1c", emoji: "🟣", label: "Ensinar e transformar vidas através da educação.", hint: "Educação e Humanas", vocacao: "educacao" },
+      { id: "m1d", emoji: "🟠", label: "Desenvolver novas tecnologias e inovação.", hint: "Tecnologia e Engenharias", vocacao: "tecnologia" },
+      { id: "m1e", emoji: "🟡", label: "Defender direitos e promover justiça.", hint: "Direito e Ciências Sociais", vocacao: "direito" },
+    ],
+  },
+  {
+    id: "m2",
+    titulo: "Sua habilidade principal",
+    pergunta: "Em um grupo de trabalho, você costuma ser quem...",
+    options: [
+      { id: "m2a", emoji: "🟢", label: "Cuida das pessoas.", vocacao: "saude" },
+      { id: "m2b", emoji: "🔵", label: "Organiza tudo.", vocacao: "negocios" },
+      { id: "m2c", emoji: "🟣", label: "Explica e ensina.", vocacao: "educacao" },
+      { id: "m2d", emoji: "🟠", label: "Resolve problemas técnicos.", vocacao: "tecnologia" },
+      { id: "m2e", emoji: "🟡", label: "Lidera discussões e toma decisões.", vocacao: "direito" },
+    ],
+  },
+  {
+    id: "m3",
+    titulo: "Missão dos sonhos",
+    pergunta: "Qual missão você aceitaria sem pensar duas vezes?",
+    options: [
+      { id: "m3a", emoji: "❤️", label: "Abrir uma clínica.", vocacao: "saude" },
+      { id: "m3b", emoji: "💼", label: "Criar minha própria empresa.", vocacao: "negocios" },
+      { id: "m3c", emoji: "📚", label: "Dar aula e inspirar pessoas.", vocacao: "educacao" },
+      { id: "m3d", emoji: "💻", label: "Criar um aplicativo que facilite a vida das pessoas.", vocacao: "tecnologia" },
+      { id: "m3e", emoji: "⚖️", label: "Defender alguém em um grande julgamento.", vocacao: "direito" },
+    ],
+  },
+  {
+    id: "m4",
+    titulo: "Seu ambiente favorito",
+    pergunta: "Onde você se imagina trabalhando?",
+    options: [
+      { id: "m4a", emoji: "🏥", label: "Hospital ou clínica.", vocacao: "saude" },
+      { id: "m4b", emoji: "🏢", label: "Escritório.", vocacao: "negocios" },
+      { id: "m4c", emoji: "🏫", label: "Escola ou universidade.", vocacao: "educacao" },
+      { id: "m4d", emoji: "💻", label: "Empresa de tecnologia.", vocacao: "tecnologia" },
+      { id: "m4e", emoji: "🏛️", label: "Tribunal ou órgão público.", vocacao: "direito" },
+    ],
+  },
+  {
+    id: "m5",
+    titulo: "Curiosidade",
+    pergunta: "O que mais desperta sua curiosidade?",
+    options: [
+      { id: "m5a", emoji: "🧠", label: "Como funciona o corpo humano.", vocacao: "saude" },
+      { id: "m5b", emoji: "📈", label: "Como empresas crescem.", vocacao: "negocios" },
+      { id: "m5c", emoji: "📖", label: "Como as pessoas aprendem.", vocacao: "educacao" },
+      { id: "m5d", emoji: "🤖", label: "Como criar tecnologia.", vocacao: "tecnologia" },
+      { id: "m5e", emoji: "⚖️", label: "Como funcionam as leis.", vocacao: "direito" },
+    ],
+  },
+  {
+    id: "m6",
+    titulo: "Poder especial",
+    pergunta: "Se pudesse desbloquear uma habilidade agora, qual seria?",
+    options: [
+      { id: "m6a", emoji: "✨", label: "Curar pessoas.", vocacao: "saude" },
+      { id: "m6b", emoji: "💰", label: "Construir negócios de sucesso.", vocacao: "negocios" },
+      { id: "m6c", emoji: "🎓", label: "Ensinar qualquer pessoa.", vocacao: "educacao" },
+      { id: "m6d", emoji: "🚀", label: "Criar soluções inovadoras.", vocacao: "tecnologia" },
+      { id: "m6e", emoji: "⚖️", label: "Defender causas importantes.", vocacao: "direito" },
+    ],
+  },
+  {
+    id: "m7",
+    titulo: "Seu maior objetivo",
+    pergunta: "Daqui a alguns anos, você quer ser reconhecido por...",
+    options: [
+      { id: "m7a", emoji: "❤️", label: "Salvar vidas.", vocacao: "saude" },
+      { id: "m7b", emoji: "📊", label: "Liderar uma empresa.", vocacao: "negocios" },
+      { id: "m7c", emoji: "📚", label: "Transformar pessoas através da educação.", vocacao: "educacao" },
+      { id: "m7d", emoji: "💡", label: "Criar algo inovador.", vocacao: "tecnologia" },
+      { id: "m7e", emoji: "⚖️", label: "Fazer justiça.", vocacao: "direito" },
+    ],
+  },
 ];
 
-export const MOMENTOS = [
-  { id: "3ano", label: "Estou no 3º ano do Ensino Médio" },
-  { id: "concluido", label: "Já concluí o Ensino Médio" },
-  { id: "trabalho", label: "Trabalho e quero crescer" },
-  { id: "retorno", label: "Vou retomar os estudos" },
-];
+export const VOCACOES = {
+  saude: {
+    id: "saude",
+    emoji: "🩺",
+    label: "Ciências da Saúde",
+    desc: "Você se realiza cuidando de gente. Sua vocação é transformar vidas de perto.",
+  },
+  negocios: {
+    id: "negocios",
+    emoji: "📈",
+    label: "Negócios e Gestão",
+    desc: "Você enxerga oportunidade onde os outros veem problema. Sua vocação é construir e liderar.",
+  },
+  educacao: {
+    id: "educacao",
+    emoji: "📚",
+    label: "Educação e Humanas",
+    desc: "Você transforma pessoas com conhecimento. Sua vocação é formar outras histórias.",
+  },
+  tecnologia: {
+    id: "tecnologia",
+    emoji: "💻",
+    label: "Tecnologia e Engenharias",
+    desc: "Você quer resolver o que ainda não foi resolvido. Sua vocação é criar o futuro.",
+  },
+  direito: {
+    id: "direito",
+    emoji: "⚖️",
+    label: "Direito e Ciências Sociais",
+    desc: "Você não passa batido por injustiça. Sua vocação é defender e decidir.",
+  },
+};
 
-export const FORMATOS = [
-  { id: "presencial", label: "Presencial", emoji: "🏫" },
-  { id: "noturno", label: "Noturno", emoji: "🌙" },
-  { id: "hibrido", label: "Híbrido", emoji: "🔀" },
-];
-
-export const MOTIVACOES = [
-  { id: "carreira", label: "Crescer na carreira" },
-  { id: "renda", label: "Aumentar minha renda" },
-  { id: "proposito", label: "Encontrar propósito" },
-  { id: "familia", label: "Orgulho da família" },
-];
+export function calcularVocacao(respostas) {
+  const score = {};
+  MISSOES.forEach((m) => {
+    const chosen = m.options.find((o) => o.id === respostas[m.id]);
+    if (chosen) score[chosen.vocacao] = (score[chosen.vocacao] ?? 0) + 1;
+  });
+  const ranked = Object.entries(score).sort((a, b) => b[1] - a[1]);
+  if (!ranked.length) return null;
+  return { ...VOCACOES[ranked[0][0]], pontos: ranked[0][1], total: MISSOES.length };
+}
 
 export const DESAFIOS = [
   { label: "Professores especialistas", xp: 100 },
@@ -52,21 +154,21 @@ export const CONQUISTAS = [
 ];
 
 export const LEVEL_LABELS = {
-  level1: "LV.01 · Criar usuário",
-  level2: "LV.02 · Escolha seu destino",
-  level3: "LV.03 · Desafios",
-  level4: "LV.04 · Desbloqueie seu futuro",
-  boss: "BOSS · Missão final",
+  cadastro: "LV.00 · Criar usuário",
+  missoes: "LV.01 · Missões vocacionais",
+  desafios: "LV.02 · Desafios",
+  futuro: "LV.03 · Desbloqueie seu futuro",
+  vocacao: "BOSS · Sua vocação",
   done: "COMPLETO",
 };
 
 export const BASE_XP = {
   boot: 0,
-  level1: 10,
-  level2: 30,
-  level3: 55,
-  level4: 80,
-  boss: 95,
+  cadastro: 5,
+  missoes: 20,
+  desafios: 70,
+  futuro: 82,
+  vocacao: 94,
   done: 100,
 };
 
