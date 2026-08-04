@@ -16,52 +16,59 @@ globalThis.__nitro_vite_envs__ = services;
 //#endregion
 //#region #nitro/virtual/public-assets-data
 var public_assets_data_default = {
+	"/index.html": {
+		"type": "text/html; charset=utf-8",
+		"etag": "\"189-trj7dmYhQfJSUqsuyY+ljWZEjXA\"",
+		"mtime": "2026-08-04T14:44:48.771Z",
+		"size": 393,
+		"path": "../public/index.html"
+	},
 	"/favicon.ico": {
 		"type": "image/vnd.microsoft.icon",
 		"etag": "\"4f95-3RXc3p2mhEAs1WBwaIvE0Y0uu0Y\"",
-		"mtime": "2026-08-04T14:08:53.432Z",
+		"mtime": "2026-08-04T14:44:48.771Z",
 		"size": 20373,
 		"path": "../public/favicon.ico"
 	},
 	"/robots.txt": {
 		"type": "text/plain; charset=utf-8",
 		"etag": "\"a0-CKGXSIe7TSsqDTmGm/nY1t/o5d0\"",
-		"mtime": "2026-08-04T14:08:53.432Z",
+		"mtime": "2026-08-04T14:44:48.771Z",
 		"size": 160,
 		"path": "../public/robots.txt"
-	},
-	"/assets/index-BQrL_Hh_.js": {
-		"type": "text/javascript; charset=utf-8",
-		"etag": "\"54097-QedHACBbCq0QIH15kByZ6iIAV7c\"",
-		"mtime": "2026-08-04T14:08:53.008Z",
-		"size": 344215,
-		"path": "../public/assets/index-BQrL_Hh_.js"
 	},
 	"/assets/index-BSVa93aa.css": {
 		"type": "text/css; charset=utf-8",
 		"etag": "\"370-+qbrQ+J5yxVpCEIAdORaPL3j2W8\"",
-		"mtime": "2026-08-04T14:08:53.008Z",
+		"mtime": "2026-08-04T14:44:48.067Z",
 		"size": 880,
 		"path": "../public/assets/index-BSVa93aa.css"
 	},
-	"/assets/routes-8d3J9nsd.js": {
+	"/assets/index-CNTuyVOR.js": {
 		"type": "text/javascript; charset=utf-8",
-		"etag": "\"4ec9-IAZG9tcENKBXuJFB1zcok69TE4c\"",
-		"mtime": "2026-08-04T14:08:53.008Z",
+		"etag": "\"540d2-zMqqiXDv66ekmqsxPsa68zcrEKs\"",
+		"mtime": "2026-08-04T14:44:48.067Z",
+		"size": 344274,
+		"path": "../public/assets/index-CNTuyVOR.js"
+	},
+	"/assets/routes-DxsW6RBo.js": {
+		"type": "text/javascript; charset=utf-8",
+		"etag": "\"4ec9-YwannJWT3HxMWH63XDR57JDPG88\"",
+		"mtime": "2026-08-04T14:44:48.067Z",
 		"size": 20169,
-		"path": "../public/assets/routes-8d3J9nsd.js"
+		"path": "../public/assets/routes-DxsW6RBo.js"
 	},
 	"/assets/routes-md8YBGLM.css": {
 		"type": "text/css; charset=utf-8",
 		"etag": "\"2aaf-Jdljm0u9pUVOg4QkX1rrnphdh9o\"",
-		"mtime": "2026-08-04T14:08:53.008Z",
+		"mtime": "2026-08-04T14:44:48.067Z",
 		"size": 10927,
 		"path": "../public/assets/routes-md8YBGLM.css"
 	},
 	"/assets/styles-CGmDZvrP.css": {
 		"type": "text/css; charset=utf-8",
 		"etag": "\"a9d-t3GMYWFQf27o8ipaodD8TLuFQ0M\"",
-		"mtime": "2026-08-04T14:08:53.008Z",
+		"mtime": "2026-08-04T14:44:48.067Z",
 		"size": 2717,
 		"path": "../public/assets/styles-CGmDZvrP.css"
 	}
