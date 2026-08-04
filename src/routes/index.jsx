@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import GridBackdrop from "../components/GridBackdrop.jsx";
 import ProgressHUD from "../components/ProgressHUD.jsx";
@@ -40,6 +40,28 @@ function Index() {
   const [respostas, setRespostas] = useState({});
   const [sound, setSound] = useState(false);
 
+  const resetGame = useCallback(() => {
+    setStage("boot");
+    setProfile(initialProfile);
+    setRespostas({});
+  }, []);
+
+  // Modo totem: volta para a tela inicial após inatividade
+  useEffect(() => {
+    if (stage === "boot") return undefined;
+    let timer = window.setTimeout(resetGame, 120000);
+    const bump = () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(resetGame, 120000);
+    };
+    const events = ["pointerdown", "keydown", "touchstart"];
+    events.forEach((e) => window.addEventListener(e, bump, { passive: true }));
+    return () => {
+      window.clearTimeout(timer);
+      events.forEach((e) => window.removeEventListener(e, bump));
+    };
+  }, [stage, resetGame]);
+
   const vocacao = useMemo(() => calcularVocacao(respostas), [respostas]);
 
   const totalXP = useMemo(() => {
@@ -77,7 +99,7 @@ function Index() {
         {stage === "vocacao" && (
           <LevelVocacao vocacao={vocacao} profile={profile} onFinish={() => setStage("done")} />
         )}
-        {stage === "done" && <Victory profile={profile} vocacao={vocacao} />}
+        {stage === "done" && <Victory profile={profile} vocacao={vocacao} onRestart={resetGame} />}
       </div>
 
       <footer className={s.footer}>{CAMPANHA} · FADAT 2027.1</footer>
