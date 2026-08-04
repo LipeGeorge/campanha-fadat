@@ -5,7 +5,7 @@ import s from "./LevelFuturo.module.css";
 export default function LevelFuturo({ onNext }) {
   return (
     <Section>
-      <LevelHeader emoji="🏆" title="Nível 4" subtitle="Desbloqueie seu futuro" />
+      <LevelHeader emoji="🏆" title="Nível 3" subtitle="Desbloqueie seu futuro" />
 
       <p className={ui.hint}>
         Cada seção é uma <span className={ui.accent}>conquista desbloqueada</span> por quem já é FADAT.
@@ -31,7 +31,7 @@ export default function LevelFuturo({ onNext }) {
         ))}
       </div>
 
-      <PrimaryBtn onClick={onNext}>Encarar o boss final →</PrimaryBtn>
+      <PrimaryBtn onClick={onNext}>Revelar minha vocação →</PrimaryBtn>
     </Section>
   );
 }

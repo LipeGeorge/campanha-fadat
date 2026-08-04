@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { CAMPANHA } from "../data/game.js";
 import { ChipLabel, PrimaryBtn, ui } from "./GameUI.jsx";
 import s from "./BootScreen.module.css";
 
@@ -27,18 +28,17 @@ export default function BootScreen({ onStart }) {
     <section className={s.boot}>
       <div className={s.top}>
         <div>
-          <ChipLabel>Fons Vitae · Vestibular 2027.1</ChipLabel>
+          <ChipLabel>{CAMPANHA}</ChipLabel>
         </div>
 
         <h1 className={s.title}>
-          Daqui pra frente,
+          Se torne quem
           <br />
-          <span className={ui.gradientText}>é FADAT.</span>
+          <span className={ui.gradientText}>você nasceu pra ser!</span>
         </h1>
 
         <p className={s.lead}>
-          Uma experiência interativa pra você descobrir o curso, a carreira e a versão de você mesmo
-          que começa agora.
+          Sete missões pra descobrir sua vocação e o curso que combina com quem você é.
         </p>
 
         <div className={s.terminal}>
