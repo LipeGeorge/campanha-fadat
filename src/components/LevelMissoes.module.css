@@ -25,7 +25,8 @@
 
 .question {
   margin-top: 8px;
-  font-size: 22px;
+  font-size: 21px;
+  line-height: 1.25;
 }
 
 .options {
@@ -70,8 +71,19 @@
   font-size: 20px;
 }
 
-.optionLabel {
+.optionBody {
+  display: flex;
   flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.optionHint {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted-foreground);
 }
 
 .xp {

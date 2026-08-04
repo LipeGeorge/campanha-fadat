@@ -1,4 +1,4 @@
-import { AREAS, FORMATOS, MOMENTOS, MOTIVACOES } from "../data/game.js";
+import { CAMPANHA } from "../data/game.js";
 import { GameCard, ui } from "./GameUI.jsx";
 import s from "./Victory.module.css";
 
@@ -11,12 +11,7 @@ function Row({ label, value }) {
   );
 }
 
-export default function Victory({ profile }) {
-  const area = AREAS.find((a) => a.id === profile.interesse);
-  const formato = FORMATOS.find((f) => f.id === profile.formato);
-  const momento = MOMENTOS.find((m) => m.id === profile.momento);
-  const motivacao = MOTIVACOES.find((m) => m.id === profile.motivacao);
-
+export default function Victory({ profile, vocacao }) {
   return (
     <section className={s.victory}>
       <div className={s.trophy} aria-hidden="true">
@@ -24,7 +19,7 @@ export default function Victory({ profile }) {
       </div>
 
       <div>
-        <div className={s.kicker}>Missão concluída</div>
+        <div className={s.kicker}>{CAMPANHA}</div>
         <h2 className={s.title}>
           Bem-vindo(a) à FADAT,
           <br />
@@ -36,12 +31,13 @@ export default function Victory({ profile }) {
         <div className={s.cardLabel}>· Seu perfil FADAT</div>
         <dl className={s.list}>
           <Row label="Nome" value={profile.nome} />
-          <Row label="Área" value={area ? `${area.emoji} ${area.label}` : ""} />
-          <Row label="Momento" value={momento?.label} />
-          <Row label="Formato" value={formato ? `${formato.emoji} ${formato.label}` : ""} />
-          <Row label="Motivação" value={motivacao?.label} />
+          <Row label="Vocação" value={vocacao ? `${vocacao.emoji} ${vocacao.label}` : ""} />
           <Row label="Cidade" value={profile.cidade} />
           <Row label="WhatsApp" value={profile.whatsapp} />
+          <Row
+            label="Depoimentos no WhatsApp"
+            value={profile.depoimentosWhatsapp ? "Sim, quero receber" : "Agora não"}
+          />
         </dl>
       </GameCard>
 
