@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
 import { CAMPANHA } from "../data/game.js";
-import { GameCard, ui } from "./GameUI.jsx";
+import { GameCard, PrimaryBtn, ui } from "./GameUI.jsx";
 import s from "./Victory.module.css";
 
 function Row({ label, value }) {
@@ -11,7 +12,19 @@ function Row({ label, value }) {
   );
 }
 
-export default function Victory({ profile, vocacao }) {
+export default function Victory({ profile, vocacao, onRestart }) {
+  const [count, setCount] = useState(30);
+
+  useEffect(() => {
+    if (!onRestart) return undefined;
+    const t = setInterval(() => setCount((c) => c - 1), 1000);
+    return () => clearInterval(t);
+  }, [onRestart]);
+
+  useEffect(() => {
+    if (onRestart && count <= 0) onRestart();
+  }, [count, onRestart]);
+
   return (
     <section className={s.victory}>
       <div className={s.trophy} aria-hidden="true">
@@ -46,6 +59,15 @@ export default function Victory({ profile, vocacao }) {
       </p>
 
       <div className={s.sign}>Daqui pra frente, é FADAT.</div>
+
+      {onRestart && (
+        <>
+          <PrimaryBtn variant="outline" onClick={onRestart}>
+            ▶ Liberar totem para o próximo
+          </PrimaryBtn>
+          <p className={s.note}>Reiniciando automaticamente em {Math.max(count, 0)}s</p>
+        </>
+      )}
     </section>
   );
 }

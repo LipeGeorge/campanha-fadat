@@ -44,6 +44,26 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --shell-max: 460px;
+  --kiosk-zoom: 1;
+}
+
+/* ---------- Modo totem (telas grandes / retrato) ---------- */
+@media (min-width: 620px) and (min-height: 800px) {
+  :root {
+    --kiosk-zoom: 1.2;
+  }
+}
+
+@media (min-width: 760px) and (min-height: 1100px) {
+  :root {
+    --kiosk-zoom: 1.55;
+  }
+}
+
+@media (min-width: 1000px) and (min-height: 1500px) {
+  :root {
+    --kiosk-zoom: 2;
+  }
 }
 
 /* ---------- Reset ---------- */
@@ -71,6 +91,18 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Totem: sem seleção de texto, sem zoom por gesto, sem flash de toque */
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+input,
+textarea {
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 img,
