@@ -1,4 +1,14 @@
-export const CAMPANHA = "Se torne quem você nasceu pra ser!";
+export const CAMPANHA = "FADAT STATION";
+
+export const STATIONS = [
+  "Embarque",
+  "Escolha sua rota",
+  "Explore os cursos",
+  "Experimente a prática",
+  "Conecte-se ao mercado",
+  "Conquiste seu futuro",
+  "Faça sua matrícula",
+];
 
 export const initialProfile = {
   nome: "",
@@ -154,12 +164,12 @@ export const CONQUISTAS = [
 ];
 
 export const LEVEL_LABELS = {
-  cadastro: "LV.00 · Criar usuário",
-  missoes: "LV.01 · Missões vocacionais",
-  desafios: "LV.02 · Desafios",
-  futuro: "LV.03 · Desbloqueie seu futuro",
-  vocacao: "BOSS · Sua vocação",
-  done: "COMPLETO",
+  cadastro: "ROTA 01 · Crie seu usuário",
+  missoes: "ROTA 02 · Escolha sua rota",
+  desafios: "ROTA 03 · Explore os cursos",
+  futuro: "ROTA 04 · Conecte-se ao mercado",
+  vocacao: "ROTA FINAL · Sua vocação",
+  done: "MISSÃO CONCLUÍDA",
 };
 
 export const BASE_XP = {

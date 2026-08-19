@@ -13,7 +13,41 @@ function Row({ label, value }) {
 }
 
 export default function Victory({ profile, vocacao, onRestart }) {
-  const [count, setCount] = useState(30);
+  const [count, setCount] = useState(10);
+
+  useEffect(() => {
+    const exportCsv = () => {
+      const rows = [
+        ["Nome", "WhatsApp", "Cidade", "Depoimentos no WhatsApp", "Vocação"],
+        [
+          profile.nome,
+          profile.whatsapp,
+          profile.cidade,
+          profile.depoimentosWhatsapp ? "Sim" : "Não",
+          vocacao ? `${vocacao.emoji} ${vocacao.label}` : "",
+        ],
+      ];
+
+      const csv = rows
+        .map((row) => row.map((cell) => `"${String(cell ?? "").replace(/"/g, '""')}"`).join(","))
+        .join("\n");
+
+      if (typeof window === "undefined") return;
+
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `fadat-station-${(profile.nome || "perfil").toLowerCase().replace(/\s+/g, "-")}.csv`;
+      link.style.display = "none";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    };
+
+    exportCsv();
+  }, [profile.nome, profile.whatsapp, profile.cidade, profile.depoimentosWhatsapp, vocacao]);
 
   useEffect(() => {
     if (!onRestart) return undefined;
@@ -53,10 +87,6 @@ export default function Victory({ profile, vocacao, onRestart }) {
           />
         </dl>
       </GameCard>
-
-      <p className={s.note}>
-        Nosso time entrará em contato via WhatsApp para dar prosseguimento à sua jornada.
-      </p>
 
       <div className={s.sign}>Daqui pra frente, é FADAT.</div>
 

@@ -9,23 +9,22 @@ import LevelMissoes from "../components/LevelMissoes.jsx";
 import LevelDesafios from "../components/LevelDesafios.jsx";
 import LevelFuturo from "../components/LevelFuturo.jsx";
 import LevelVocacao from "../components/LevelVocacao.jsx";
-import Victory from "../components/Victory.jsx";
 import { BASE_XP, CAMPANHA, calcularVocacao, initialProfile } from "../data/game.js";
 import s from "./index.module.css";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "FADAT 2027.1 — Se torne quem você nasceu pra ser!" },
+      { title: "FADAT Station — Daqui pra frente é FADAT" },
       {
         name: "description",
         content:
-          "Experiência interativa e gamificada para descobrir sua vocação na FADAT. Pré-inscrição do Vestibular 2027.1.",
+          "Embarque na FADAT Station e descubra sua rota até o futuro. Experiência interativa com perfil acadêmico e vocacional.",
       },
-      { property: "og:title", content: "FADAT 2027.1 — Se torne quem você nasceu pra ser!" },
+      { property: "og:title", content: "FADAT Station — Daqui pra frente é FADAT" },
       {
         property: "og:description",
-        content: "Sete missões para descobrir sua vocação. Pré-inscrição do Vestibular FADAT 2027.1.",
+        content: "Embarque na FADAT Station e descubra sua rota até o futuro.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -39,20 +38,56 @@ function Index() {
   const [profile, setProfile] = useState(initialProfile);
   const [respostas, setRespostas] = useState({});
   const [sound, setSound] = useState(false);
+  const [completed, setCompleted] = useState(false);
 
   const resetGame = useCallback(() => {
     setStage("boot");
     setProfile(initialProfile);
     setRespostas({});
+    setCompleted(false);
   }, []);
+
+  const vocacao = useMemo(() => calcularVocacao(respostas), [respostas]);
+
+  const saveLeadSilently = useCallback(() => {
+    const payload = {
+      nome: profile.nome,
+      whatsapp: profile.whatsapp,
+      cidade: profile.cidade,
+      depoimentosWhatsapp: profile.depoimentosWhatsapp ? "Sim" : "Não",
+      vocacao: vocacao ? `${vocacao.emoji} ${vocacao.label}` : "",
+      respostas: JSON.stringify(respostas),
+      timestamp: new Date().toISOString(),
+    };
+
+    const sheetEndpoint = "";
+
+    if (!sheetEndpoint) {
+      return;
+    }
+
+    fetch(sheetEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+      mode: "cors",
+    }).catch(() => {});
+  }, [profile, respostas, vocacao]);
+
+  const handleFinish = useCallback(() => {
+    saveLeadSilently();
+    setCompleted(true);
+  }, [saveLeadSilently]);
 
   // Modo totem: volta para a tela inicial após inatividade
   useEffect(() => {
     if (stage === "boot") return undefined;
-    let timer = window.setTimeout(resetGame, 120000);
+    let timer = window.setTimeout(resetGame, 10000);
     const bump = () => {
       window.clearTimeout(timer);
-      timer = window.setTimeout(resetGame, 120000);
+      timer = window.setTimeout(resetGame, 10000);
     };
     const events = ["pointerdown", "keydown", "touchstart"];
     events.forEach((e) => window.addEventListener(e, bump, { passive: true }));
@@ -62,12 +97,11 @@ function Index() {
     };
   }, [stage, resetGame]);
 
-  const vocacao = useMemo(() => calcularVocacao(respostas), [respostas]);
-
   const totalXP = useMemo(() => {
+    if (completed) return 100;
     const respondidas = Object.keys(respostas).length;
     return Math.min(100, (BASE_XP[stage] ?? 0) + respondidas * 7);
-  }, [stage, respostas]);
+  }, [completed, stage, respostas]);
 
   return (
     <main className={s.page}>
@@ -95,11 +129,18 @@ function Index() {
           />
         )}
         {stage === "desafios" && <LevelDesafios onNext={() => setStage("futuro")} />}
-        {stage === "futuro" && <LevelFuturo onNext={() => setStage("vocacao")} />}
-        {stage === "vocacao" && (
-          <LevelVocacao vocacao={vocacao} profile={profile} onFinish={() => setStage("done")} />
+        {stage === "futuro" && (
+          <LevelFuturo profile={profile} onNext={() => setStage("vocacao")} />
         )}
-        {stage === "done" && <Victory profile={profile} vocacao={vocacao} onRestart={resetGame} />}
+        {stage === "vocacao" && (
+          <LevelVocacao
+            vocacao={vocacao}
+            profile={profile}
+            onFinish={handleFinish}
+            finalMode={completed}
+            onRestart={resetGame}
+          />
+        )}
       </div>
 
       <footer className={s.footer}>{CAMPANHA} · FADAT 2027.1</footer>

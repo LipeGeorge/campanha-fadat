@@ -4,10 +4,10 @@ import { ChipLabel, PrimaryBtn, ui } from "./GameUI.jsx";
 import s from "./BootScreen.module.css";
 
 const SCRIPT = [
-  "> booting FADAT.STATION_2027.1",
-  "> loading vestibular_module...",
-  "> conectando com seu futuro...",
-  "> pronto.",
+  "> initializing FADAT.STATION_2027.1",
+  "> verifying academic passport...",
+  "> unlocking your mission path...",
+  "> ready for launch.",
 ];
 
 export default function BootScreen({ onStart }) {
@@ -32,13 +32,14 @@ export default function BootScreen({ onStart }) {
         </div>
 
         <h1 className={s.title}>
-          Se torne quem
+          Bem-vindo à
           <br />
-          <span className={ui.gradientText}>você nasceu pra ser!</span>
+          <span className={ui.gradientText}>FADAT Station</span>
         </h1>
 
         <p className={s.lead}>
-          Sete missões pra descobrir sua vocação e o curso que combina com quem você é.
+          Antes do embarque, precisamos emitir seu Passaporte Acadêmico. Ele será utilizado para
+          registrar sua jornada e desbloquear sua missão.
         </p>
 
         <div className={s.terminal}>
@@ -52,7 +53,7 @@ export default function BootScreen({ onStart }) {
       </div>
 
       <div className={s.bottom}>
-        <PrimaryBtn onClick={onStart}>▶ Iniciar missão</PrimaryBtn>
+        <PrimaryBtn onClick={onStart}>▶ Iniciar embarque</PrimaryBtn>
         <p className={s.tap}>Toque para começar</p>
       </div>
     </section>

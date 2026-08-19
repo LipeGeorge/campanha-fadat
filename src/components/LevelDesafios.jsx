@@ -16,10 +16,11 @@ export default function LevelDesafios({ onNext }) {
 
   return (
     <Section>
-      <LevelHeader emoji="🧩" title="Nível 2" subtitle="Desafios" />
+      <LevelHeader emoji="🌍" title="Estação 03" subtitle="Explore os cursos" />
 
       <p className={ui.hint}>
-        Cada diferencial da FADAT aparece como uma <span className={ui.accent}>missão concluída</span>.
+        Cada diferencial da FADAT aparece como uma <span className={ui.accent}>experiência que
+        te aproximará do seu futuro</span>.
       </p>
 
       <GameCard>

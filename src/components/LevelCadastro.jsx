@@ -13,10 +13,11 @@ export default function LevelCadastro({ profile, setProfile, onNext }) {
 
   return (
     <Section>
-      <LevelHeader emoji="🕹️" title="Nível 0" subtitle="Criar usuário" />
+      <LevelHeader emoji="�" title="Estação 01" subtitle="Crie seu usuário" />
 
       <p className={ui.hint}>
-        Antes de começar, monte seu <span className={ui.accent}>perfil de jogador</span>.
+        Antes do embarque, registre seu <span className={ui.accent}>Passaporte Acadêmico</span> para
+        liberar sua jornada na FADAT Station.
       </p>
 
       <GameCard>
@@ -74,14 +75,14 @@ export default function LevelCadastro({ profile, setProfile, onNext }) {
 
         {profile.nome.trim() && (
           <div className={s.confirm}>
-            <div>Perfil criado com sucesso.</div>
+            <div>Passaporte emitido com sucesso.</div>
             <div>Bem-vindo(a), {profile.nome.trim().split(" ")[0]}.</div>
           </div>
         )}
       </GameCard>
 
       <PrimaryBtn onClick={onNext} disabled={!ok}>
-        Começar missões →
+        Continuar para a rota →
       </PrimaryBtn>
     </Section>
   );

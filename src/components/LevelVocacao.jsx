@@ -1,10 +1,21 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CAMPANHA } from "../data/game.js";
 import { GameCard, LevelHeader, PrimaryBtn, Section, ui } from "./GameUI.jsx";
 import s from "./LevelVocacao.module.css";
 
-export default function LevelVocacao({ vocacao, profile, onFinish }) {
+export default function LevelVocacao({ vocacao, profile, onFinish, onRestart, finalMode = false }) {
   const submitting = useRef(false);
+  const [count, setCount] = useState(10);
+
+  useEffect(() => {
+    if (!onRestart) return undefined;
+    const interval = setInterval(() => setCount((c) => Math.max(0, c - 1)), 1000);
+    return () => clearInterval(interval);
+  }, [onRestart]);
+
+  useEffect(() => {
+    if (onRestart && count <= 0) onRestart();
+  }, [count, onRestart]);
 
   const submit = () => {
     if (submitting.current) return;
@@ -14,10 +25,10 @@ export default function LevelVocacao({ vocacao, profile, onFinish }) {
 
   return (
     <Section>
-      <LevelHeader emoji="🎓" title="Boss Final" subtitle="Sua vocação" />
+      <LevelHeader emoji="⭐" title={finalMode ? "Sua vocação" : "Estação Final"} subtitle={finalMode ? "Conquiste seu futuro" : "Sua vocação"} />
 
       <GameCard>
-        <div className={s.kicker}>Vocação revelada</div>
+        <div className={s.kicker}>{finalMode ? "Sua área ideal" : "Vocação revelada"}</div>
         <div className={s.emoji} aria-hidden="true">
           {vocacao?.emoji ?? "🎯"}
         </div>
@@ -32,16 +43,17 @@ export default function LevelVocacao({ vocacao, profile, onFinish }) {
         )}
       </GameCard>
 
-      <GameCard tight>
-        <p className={s.next}>
-          {profile.nome.trim().split(" ")[0] || "Jogador"}, o próximo passo é o Vestibular FADAT{" "}
-          <span className={ui.accent}>2027.1</span>.
-        </p>
-      </GameCard>
-
-      <PrimaryBtn onClick={submit}>{CAMPANHA}</PrimaryBtn>
-
-      <p className={s.legal}>Ao enviar, você concorda com nossa Política de Privacidade.</p>
+      {finalMode ? (
+        <>
+          <PrimaryBtn onClick={onRestart}>Voltar ao início</PrimaryBtn>
+          <p className={s.legal}>Retornando ao início em {count}s.</p>
+        </>
+      ) : (
+        <>
+          <PrimaryBtn onClick={submit}>🎓 Finalizar jornada</PrimaryBtn>
+          <p className={s.legal}>Ao enviar, você concorda com nossa Política de Privacidade.</p>
+        </>
+      )}
     </Section>
   );
 }

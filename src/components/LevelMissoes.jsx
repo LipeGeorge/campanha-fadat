@@ -17,7 +17,7 @@ export default function LevelMissoes({ respostas, setRespostas, onNext }) {
 
   return (
     <Section>
-      <LevelHeader emoji="🧩" title={`Missão ${step + 1}`} subtitle={missao.titulo} />
+      <LevelHeader emoji="🛰️" title={`Rota ${step + 1}`} subtitle={missao.titulo} />
 
       <div className={s.steps}>
         {MISSOES.map((m, i) => (
@@ -56,7 +56,7 @@ export default function LevelMissoes({ respostas, setRespostas, onNext }) {
       </GameCard>
 
       <p className={ui.hintCenter}>
-        Cada resposta revela um pedaço da sua <span className={ui.accent}>vocação</span>.
+        Cada escolha revela um trecho da sua <span className={ui.accent}>rota até o futuro</span>.
       </p>
     </Section>
   );
